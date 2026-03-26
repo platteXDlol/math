@@ -1,4 +1,4 @@
-import { assertAlmostEquals } from "@std/assert";
+import { assertAlmostEquals, assertEquals } from "@std/assert";
 import { Circle, Point2D, Rectangle } from "./geometry.ts";
 
 Deno.test("circumference of a circle with radius 5 is roughly 31.416", () => {
@@ -43,4 +43,26 @@ Deno.test("diagonal of a rectangle with bottom-left (0, 0) and top-right (3, 4) 
 
   // Then
   assertAlmostEquals(actual, 5, 0.01);
+});
+
+Deno.test("area of a rectangle with bottom-left (0, 0) and top-right (3, 4) is 12", () => {
+  // Given
+  const rectangle = new Rectangle(new Point2D(0, 0), new Point2D(3, 4));
+
+  // When
+  const actual = rectangle.area();
+
+  // Then
+  assertEquals(actual, 12);
+});
+
+Deno.test("circumference of a rectangle with bottom-left (0, 0) and top-right (3, 4) is 14", () => {
+  // Given
+  const rectangle = new Rectangle(new Point2D(0, 0), new Point2D(3, 4));
+
+  // When
+  const actual = rectangle.circumference();
+
+  // Then
+  assertEquals(actual, 14);
 });
